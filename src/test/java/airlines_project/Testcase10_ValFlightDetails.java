@@ -4,15 +4,15 @@ import java.io.IOException;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.testng.Assert;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import Utility_Airlines.DDT_Airlines;
-@Listeners(Utility_Airlines.Listeners.class)
-public class Testcase15_CCPay extends Airlines_BM_AM
+
+
+public class Testcase10_ValFlightDetails extends Airlines_BM_AM
 {
 	@Test(retryAnalyzer=Utility_Airlines.RetryTC.class)
-	public void CCPayment() throws EncryptedDocumentException, IOException, InterruptedException
+	public void ValidateTillEnd() throws EncryptedDocumentException, IOException, InterruptedException
 	{
 		DDT_Airlines d1=new DDT_Airlines();
 		d1.logincredentials();
@@ -21,6 +21,7 @@ public class Testcase15_CCPay extends Airlines_BM_AM
 		v1.bookflightlogin();
 		v1.username();
 		v1.password();
+		
 		
 		SearchOneWayF_TC4 s1=new SearchOneWayF_TC4(driver);
 		s1.OneWayTrip();
@@ -35,33 +36,25 @@ public class Testcase15_CCPay extends Airlines_BM_AM
 		seat.Search();
 		Thread.sleep(3000);
 		seat.Book();
-		seat.ProceedToTravelDetails();
 		
-		Thread.sleep(3000);
-		seat.AddAdult();
-		seat.Gender();
-		seat.Female();
-		seat.FirstName();
-		seat.LastName();
-		seat.AddAdultName();
-	//	seat.PassengerOne();
-		Thread.sleep(1000);
-		seat.SeatSelection();
+		ValFlightDetails_TC10 f1=new ValFlightDetails_TC10(driver);
 		
-		CCPay_TC15 c1=new CCPay_TC15(driver);
-		c1.SkipSelection();
-		c1.TermsAndConds();
-		c1.ProceedToPay();
-		
-		c1.CCselect();
-		
-		Thread.sleep(2000);
-		c1.CCnum();
-		c1.EnterCardDetails();
-		
-		boolean b1=c1.alertmess();
+		boolean b1=f1.FlightInfo();
 		Assert.assertEquals(b1, true);
 		
-	}
+		f1.ViewBaggage();
 		
+		boolean b2=f1.BaggageLimit();
+		Assert.assertEquals(b2, true);
+		
+		f1.Cancellation();
+		
+		boolean b3=f1.NonRefundOnCancel();
+		Assert.assertEquals(b3, true);
+		
+		f1.ViewFareDetails();
+		
+		boolean b4=f1.FareDetails();
+		Assert.assertEquals(b4, true);
+}
 }
