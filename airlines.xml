@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Test">
+    <classes>
+      <class name="airlines_project.Testcase2_ValidLogin"/>
+      <class name="airlines_project.Testcase3_InvalidLogin"/>
+      <class name="airlines_project.Testcase4_SearchOneWayF"/>
+      <class name="airlines_project.Testcase5_SearchRoundTripF"/>
+      <class name="airlines_project.Testcase6_ValidateSearchdiffClasses"/>
+      <class name="airlines_project.Testcase8_SeatSelection"/>
+      <class name="airlines_project.Testcase9_MulPassSingleBooking"/>
+      <class name="airlines_project.Testcase12_LoginSearchLogout"/>
+	 <class name="airlines_project.Testcase14_SearchDomesRoundTF"/>
+      
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
